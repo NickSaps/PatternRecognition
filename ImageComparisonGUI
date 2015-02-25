@@ -1,0 +1,40 @@
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+
+public class FileSelectorGUI {
+	
+	public File fileGiver()
+		{
+			JFrame frame = new JFrame();
+			JFileChooser selector = new JFileChooser();
+			frame.setVisible(true);
+			frame.setSize(500, 500);
+			frame.setContentPane(selector);
+			selector.setVisible(true);
+			selector.setMultiSelectionEnabled(true);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//			FileChooser.setSize(600, 200
+//	        FileChooser.setMultiSelectionEnabled(true);
+			
+     ///////This selection of code came from Donovan-it enables double selection in one fileChooser window/////////
+			
+	        int Val = selector.showOpenDialog(frame.getContentPane());
+	        if (Val == JFileChooser.APPROVE_OPTION) {
+	        	return selector.getSelectedFiles()[0];
+//	            System.out.println(Arrays.toString(files));
+//	            File[] files = FileChooser.getSelectedFiles();
+//	            System.out.println(Arrays.toString(files));
+//	            for(File f : files){
+//	                ImagePatterns.GUI.ConsoleOut.append("Opening: " + f.getName() + ". \n");
+//	            }
+//	            return files;
+	        } else {
+//	            ImagePatterns.GUI.ConsoleOut.append("Open command cancelled by user. \n");
+	            return null;
+	        }
+			
+//			return selector.getSelectedFile();
+		}
+	
+}
