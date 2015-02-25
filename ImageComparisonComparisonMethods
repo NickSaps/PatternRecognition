@@ -1,0 +1,35 @@
+import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
+import java.util.Arrays;
+
+public class FaceRecognition {
+		public void ComparisonMethod(BufferedImage Image1, BufferedImage Image2){
+			
+		Raster r1 = Image1.getData();
+		Raster r2 = Image2.getData();
+		
+		float minHeight = Math.min(r1.getHeight(), r2.getHeight());
+		float minWidth = Math.min(r1.getWidth(), r2.getWidth());
+		float fArray[] = null;
+		int counter = 0;
+		for (int x = 0; x < minWidth; x++) {
+			for (int y = 0; y < minHeight; y++) {
+				try {
+					//System.out.println(Arrays.toString(r1.getPixel(x, y, fArray)));
+					
+					//System.out.println(Arrays.toString(r2.getPixel(x, y, fArray)));
+					
+					if (Arrays.equals(r1.getPixel(x, y, fArray), r2.getPixel(x, y, fArray))) {
+						counter++;
+					}
+
+				} catch (Exception e) {
+					System.out.println("Error at:" + " " + x + " " + y
+							+ e.toString());
+				}
+
+			}
+		}
+		System.out.println((counter / (minHeight * minWidth)) * 100 + "%");
+	 }
+}
