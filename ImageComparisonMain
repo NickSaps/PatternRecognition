@@ -8,33 +8,20 @@ import javax.imageio.ImageIO;
 public class FaceRecogMain {
 	public static void main(String[] args) {
 
-		/*String fileSep = System.getProperty("file.separator");
-		File ImageFile1 = new File("" + fileSep + "Users" + fileSep + "NicholasSapsin" + fileSep + "Desktop" + fileSep + "background_copy.jpg"); //TODO add file path
-		File ImageFile2 = new File("" + fileSep + "Users" + fileSep + "NicholasSapsin" + fileSep + "Desktop" + fileSep + "background.jpg");
-		*/
-		
-
 		FileSelectorGUI fileSelector = new FileSelectorGUI();
 		File ImageFile1 = fileSelector.fileGiver();
 		File ImageFile2 = fileSelector.fileGiver();
 		
-	
-
 		BufferedImage Image1 = null;
 		BufferedImage Image2 = null;
 		
 		try {
-			// Takes the Image from the ImageFile and loads it to Image1
-			// (buffered)
 			Image1 = ImageIO.read(ImageFile1);
 			Image2 = ImageIO.read(ImageFile2);
 		} catch (IOException ex) {
-			// Prints error
 			ex.printStackTrace();
 			return;
 		}
-		// At this point both images are loaded and ready for use
-		// Raster is the way java makes integers RGB values
 		FaceRecognition f1 = new FaceRecognition();
 		f1.ComparisonMethod(Image1, Image2);
 	}

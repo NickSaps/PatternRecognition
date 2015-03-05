@@ -1,2 +1,2 @@
 # PatternRecognition
-Compares Images
+Compares two image files
